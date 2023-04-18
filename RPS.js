@@ -15,8 +15,10 @@ function getComputerChoice() {
 // Returns a String; either "You [Win/Lose]! X beats Y" or "Draw! Both choose Z"
 function playRound(playerChoice, computerChoice) {
     // Create local variables for choices with standardized capitalization
-    const pCStd = playerChoice.substring(0,1).toUpperCase() + playerChoice.substring(1,playerChoice.length).toLowerCase();
-    const cCStd = computerChoice.substring(0,1).toUpperCase() + computerChoice.substring(1,computerChoice.length).toLowerCase();
+    const pCStd = playerChoice.substring(0,1).toUpperCase() + 
+                    playerChoice.substring(1,playerChoice.length).toLowerCase();
+    const cCStd = computerChoice.substring(0,1).toUpperCase() + 
+                    computerChoice.substring(1,computerChoice.length).toLowerCase();
 
     //Verify that both inputs are valid
     if(!(pCStd === "Rock" || pCStd === "Paper" || pCStd === "Scissors"))
@@ -56,10 +58,11 @@ function game() {
 
         // Increment round number and print current game state
         round++;
-        console.log('Round ' + round + ': Score Player ' + playerScore + ' - Computer ' + computerScore);
+        console.log('Round ' + round + ': Score Player ' + playerScore 
+                        + ' - Computer ' + computerScore);
 
         // Nesting While Loops until Player or Computer wins the round
-        // Inner loop runs until player gives valid input, and exits with roundResult showing the result
+        // Inner loop runs until player gives valid input
         // Outer loop runs until the result is not a draw
         
         roundResult = "Draw"; //initialize for outer loop
@@ -78,13 +81,14 @@ function game() {
         if(roundResult.substring(4,5) === "W") playerScore++;
         else if (roundResult.substring(4,5) === "L") computerScore++;
         
-        // Check if either Player or Computer has won 3 games (3 wins is Best-of-5)
+        // Check if either Player or Computer has won Best-of-5 (3 games)
         if(Math.max(playerScore, computerScore) === 3) break;
     }
 
     // Print final outcome
     console.log("Game Over!");
-    console.log("Final Score: Player " + playerScore + " - Computer " + computerScore);
+    console.log("Final Score: Player " + playerScore 
+                    + " - Computer " + computerScore);
     if(playerScore > computerScore) console.log ("Player Wins!");
     else console.log("Computer Wins!");
 }
