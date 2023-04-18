@@ -15,8 +15,8 @@ function getComputerChoice() {
 // Returns a String; either "You [Win/Lose]! X beats Y" or "Draw! Both choose Z"
 function playRound(playerChoice, computerChoice) {
     // Create local variables for choices with standardized capitalization
-    const pCStd = playerChoice.substr(0,1).toUpperCase() + playerChoice.substr(1,playerChoice.length - 1).toLowerCase();
-    const cCStd = computerChoice.substr(0,1).toUpperCase() + computerChoice.substr(1,computerChoice.length - 1).toLowerCase();
+    const pCStd = playerChoice.substring(0,1).toUpperCase() + playerChoice.substring(1,playerChoice.length).toLowerCase();
+    const cCStd = computerChoice.substring(0,1).toUpperCase() + computerChoice.substring(1,computerChoice.length).toLowerCase();
 
     //Verify that both inputs are valid
     if(!(pCStd === "Rock" || pCStd === "Paper" || pCStd === "Scissors"))
