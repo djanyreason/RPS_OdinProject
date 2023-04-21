@@ -1,0 +1,12 @@
+.playButtons {
+  display: flex;
+  justify-content: space-around;
+}
+
+button {
+  padding: 15px;
+}
+
+div {
+  padding: 25px;
+}

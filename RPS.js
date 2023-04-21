@@ -1,3 +1,6 @@
+let playerScore = 0;
+let computerScore = 0;
+
 // Function getComputerChoice() - Randomly selects a choice of Rock, Paper, or Scissors
 // Takes no parameters
 // Returns a string of "Rock", "Paper", or "Scissors"
@@ -32,13 +35,17 @@ function playRound(playerChoice, computerChoice) {
     //Checks if Player wins
     if((pCStd === "Rock" && cCStd === "Scissors") ||
        (pCStd === "Paper" && cCStd === "Rock") ||
-       (pCStd === "Scissors" && cCStd === "Paper"))
-        return "You Win! " + pCStd + " beats " + cCStd;
-    
+       (pCStd === "Scissors" && cCStd === "Paper")) {
+          playerScore++;
+          return "You Win! " + pCStd + " beats " + cCStd;
+       }
     //If inputs are valid, not a Draw, not Player win, then Computer must win
-    else return "You Lose! " + cCStd + " beats " + pCStd;
+    else {
+      computerScore++;
+      return "You Lose! " + cCStd + " beats " + pCStd;
+    }
 }
-
+/*
 // Function game() - Plays a best-of-5 game of Rock Paper Scissors in the Console
 //      Prints game status by round and final result
 // No Parameters
@@ -92,3 +99,17 @@ function game() {
     if(playerScore > computerScore) console.log ("Player Wins!");
     else console.log("Computer Wins!");
 }
+*/
+
+
+const buttons = document.querySelectorAll(".choiceButton");
+
+buttons.forEach(button => button.addEventListener('click', 
+  e => { 
+    if((playerScore >= 5) || (computerScore >= 5)) return;
+    document.getElementById("Results").innerHTML = 
+       (playRound(button.innerHTML,getComputerChoice()) + "<br><br>" +
+       "Current Score: Player " + playerScore + " Computer " + computerScore +
+       "<br><br>" + ((playerScore >= 5) ? "Player Wins!":((computerScore >= 5) ? "Computer Wins!":""))
+      );
+  }));
